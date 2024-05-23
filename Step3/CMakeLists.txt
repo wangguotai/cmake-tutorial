@@ -10,8 +10,12 @@ project(Tutorial VERSION 1.0)
 #   Hint: Use target_compile_features()
 
 # specify the C++ standard
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+#set(CMAKE_CXX_STANDARD 11)
+#set(CMAKE_CXX_STANDARD_REQUIRED True)
+# create an interface library, tutorial_compiler_flags.
+# And then use target_compile_features() to add the compiler feature cxx_std-11.
+add_library(tutorial_compiler_flags INTERFACE)
+target_compile_features(tutorial_compiler_flags INTERFACE cxx_std_11)
 
 # configure a header file to pass some of the CMake settings
 # to the source code
@@ -27,7 +31,7 @@ add_executable(Tutorial tutorial.cxx)
 
 # TODO 5: Link Tutorial to tutorial_compiler_flags
 
-target_link_libraries(Tutorial PUBLIC MathFunctions)
+target_link_libraries(Tutorial PUBLIC MathFunctions tutorial_compiler_flags)
 
 # TODO 3: Remove use of EXTRA_INCLUDES
 
