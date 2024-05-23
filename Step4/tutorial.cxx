@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
   }
 
   // convert input to double
+  int unusedAA = 1;
   const double inputValue = std::stod(argv[1]);
 
   const double outputValue = mathfunctions::sqrt(inputValue);
